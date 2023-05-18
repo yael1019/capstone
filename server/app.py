@@ -1,20 +1,26 @@
 from flask import Flask, request, jsonify
 from flask_migrate import Migrate
 from models import db, User, Specialist, Service, Appointment
+from flask_bcrypt import Bcrypt
 import os
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, JWTManager
-load_dotenv()
 
+#! CONFIG
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///development.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY")
+# print(os.getenv("JWT_SECRET_KEY"))
 migrate = Migrate(app, db)
 db.init_app(app)
-
+bcrypt = Bcrypt(app)
+# load_dotenv()
 jwt = JWTManager(app)
 
+app.secret_key = os.getenv("PASSWORD_SECRET_KEY")
+
+#! HOME ROUTE
 @app.get('/')
 def get():
     return 'Hello World'
@@ -36,6 +42,29 @@ def post_user():
     db.session.add(user)
     db.session.commit()
     return jsonify(user.to_dict()), 201
+
+@app.post('/login')
+def login():
+    user = User.query.where(User.username == request.json['username']).first()
+    if user:
+        token = create_access_token(identity=user.id)
+        return {
+            "user": user.to_dict(),
+            "token": token
+        }, 201
+    else:
+        return {'Error': 'Invalid username or password'}, 401
+
+@app.get('/check_token')
+@jwt_required()
+def check_token():
+    id = get_jwt_identity()
+    print(id)
+    user = User.query.where(User.id == id).first()
+    if user:
+        return {"user": user.to_dict()}, 200
+    else:
+        return {'Error': 'Unauthorized'}, 401
 
 #! SPECIALIST ROUTES
 @app.get('/specialists')
