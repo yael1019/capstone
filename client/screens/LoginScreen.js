@@ -36,7 +36,7 @@ const LoginScreen = ({ navigation }) => {
   }, [])
 
   function handleSubmit() {
-    console.log('submitting')
+    // console.log('submitting')
     fetch('http://localhost:3001/login', {
       method: 'POST',
       headers: {

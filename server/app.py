@@ -38,10 +38,17 @@ def get_user(id):
 
 @app.post('/users')
 def post_user():
-    user = User(**request.json)
-    db.session.add(user)
-    db.session.commit()
-    return jsonify(user.to_dict()), 201
+    try:
+        user = User(**request.json)
+        users = User.query.all()
+        for us in users:
+            if us.username == user.username:
+                pass
+        db.session.add(user)
+        db.session.commit()
+        return jsonify(user.to_dict()), 201
+    except:
+        return {'Error': 'That username is taken. Username must be unique.'}, 401
 
 @app.post('/login')
 def login():
