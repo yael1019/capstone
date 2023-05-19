@@ -1,4 +1,4 @@
-from app import app
+from app import app, bcrypt
 from models import db, User, Specialist, Service, Appointment
 from faker import Faker
 import random
@@ -14,18 +14,18 @@ if __name__ == '__main__':
         Appointment.query.delete()
 
         print("Starting Seeding!")
-
+        # password_hash = bcrypt.generate_password_hash('password123').decode('utf-8')
         users = []
-        tim = User('Tim Charles', 'timothy_charles@gmail.com', 'TimmyTom', 'password123')
-        bob = User('Bob Anthony', 'bobAnthony@gmail.com', 'Anthonyb', 'password123')
-        jacky = User('Jacky Gell', 'jacksgells@gmail.com', 'JackyGeller', 'password123')
-        abraham = User('Abraham Shalom', 'abe_shalom@gmail.com', 'Abe', 'password123')
-        carlos = User('Carlos Smith', 'carlos_SMITH@gmail.com', 'Carlos_Smith', 'password123')
-        freddy = User('Freddy Jenkins', 'fJenkins@gmail.com', 'JenkinsFreddy', 'password123')
-        sandy = User('Sandy Cheeks', 'sandycheeks@gmail.com', 'SandyC', 'password123')
-        jennifer = User('Jennifer Bruno', 'jenB@gmail.com', 'JenB', 'password123')
-        dennise = User('Dennise Bruno', 'dennise@gmail.com', 'DeeBruno', 'password123')
-        robert = User('Robert Jones', 'robertjones@gmail.com', 'RobJones', 'password123')
+        tim = User('Tim Charles', 'timothy_charles@gmail.com', 'TimmyTom', bcrypt.generate_password_hash('password123').decode('utf-8'))
+        bob = User('Bob Anthony', 'bobAnthony@gmail.com', 'Anthonyb', bcrypt.generate_password_hash('password123').decode('utf-8'))
+        jacky = User('Jacky Gell', 'jacksgells@gmail.com', 'JackyGeller', bcrypt.generate_password_hash('password123').decode('utf-8'))
+        abraham = User('Abraham Shalom', 'abe_shalom@gmail.com', 'Abe', bcrypt.generate_password_hash('password123').decode('utf-8'))
+        carlos = User('Carlos Smith', 'carlos_SMITH@gmail.com', 'Carlos_Smith', bcrypt.generate_password_hash('password123').decode('utf-8'))
+        freddy = User('Freddy Jenkins', 'fJenkins@gmail.com', 'JenkinsFreddy', bcrypt.generate_password_hash('password123').decode('utf-8'))
+        sandy = User('Sandy Cheeks', 'sandycheeks@gmail.com', 'SandyC', bcrypt.generate_password_hash('password123').decode('utf-8'))
+        jennifer = User('Jennifer Bruno', 'jenB@gmail.com', 'JenB', bcrypt.generate_password_hash('password123').decode('utf-8'))
+        dennise = User('Dennise Bruno', 'dennise@gmail.com', 'DeeBruno', bcrypt.generate_password_hash('password123').decode('utf-8'))
+        robert = User('Robert Jones', 'robertjones@gmail.com', 'RobJones', bcrypt.generate_password_hash('password123').decode('utf-8'))
 
         users.append(tim)
         users.append(bob)
