@@ -39,7 +39,14 @@ def get_user(id):
 @app.post('/users')
 def post_user():
     try:
-        user = User(**request.json)
+        data = request.json
+        password_hash = bcrypt.generate_password_hash(data['password']).decode('utf-8')
+        user = User(
+            name=data['name'],
+            email=data['email'],
+            username=data['username'],
+            password=password_hash
+        )
         users = User.query.all()
         for us in users:
             if us.username == user.username:
@@ -53,7 +60,7 @@ def post_user():
 @app.post('/login')
 def login():
     user = User.query.where(User.username == request.json['username']).first()
-    if user:
+    if user and bcrypt.check_password_hash(user.password, request.json['password']):
         token = create_access_token(identity=user.id)
         return {
             "user": user.to_dict(),
