@@ -7,6 +7,7 @@ import {
     SafeAreaView,
     Text
   } from 'react-native';
+import { UserContext } from '../UserContext';
 
 const HomeScreen = ({ navigation }) => {
   return (

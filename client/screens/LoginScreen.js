@@ -1,7 +1,7 @@
 import { View, Text, TextInput, TouchableOpacity, Keyboard, ScrollView } from 'react-native'
 import React, { useState, useEffect, useContext } from 'react'
 import * as SecureStore from 'expo-secure-store';
-import { UserContext } from '../StackNavigator';
+import { UserContext } from '../UserContext';
 
 const LoginScreen = ({ navigation }) => {
   const [currentUser, setCurrentUser] = useContext(UserContext)
@@ -9,7 +9,6 @@ const LoginScreen = ({ navigation }) => {
     username: '',
     password: ''
   })
-  // const [currentUser, setCurrentUser] = useState(null)
 
   function handleChange(text, name){
     setForm({
@@ -17,23 +16,6 @@ const LoginScreen = ({ navigation }) => {
       [name]: text
     })
   }
-
-  useEffect(() => {
-    async function checkToken() {
-      const token = await SecureStore.getItemAsync('token')
-      if(token) {
-          // console.log(token)
-          const headers = {
-            'Authorization': `Bearer ${token}`
-          }
-          const res = await fetch('http://localhost:3001/check_token', { headers })
-          const data = await res.json()
-          console.log(data)
-          setCurrentUser(data.user)
-        }
-      }
-      checkToken()
-  }, [])
 
   function handleSubmit() {
     // console.log('submitting')
@@ -69,12 +51,6 @@ const LoginScreen = ({ navigation }) => {
   }
   return (
     <ScrollView>
-      {
-        currentUser
-        ?
-        navigation.replace('service')
-        :
-        <>
           <TextInput 
             name='username'
             placeholder='username'
@@ -100,8 +76,6 @@ const LoginScreen = ({ navigation }) => {
             onPress={handleSubmit}
             >Log In</Text>
           </TouchableOpacity>
-      </>
-      }
     </ScrollView>
   )
 }

@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React, {useContext} from 'react'
 import { useNavigationState } from '@react-navigation/native'
-import { UserContext } from '../StackNavigator'
+import { UserContext } from '../UserContext'
 import * as SecureStore from 'expo-secure-store';
 
 const ServiceScreen = ({ navigation }) => {
