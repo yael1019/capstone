@@ -18,14 +18,37 @@ const CreateAccountScreen = ({ navigation }) => {
 
   function handleSubmit() {
      console.log('submitting')
-     console.log(form)
-     setForm({
-      name: '',
-      email: '',
-      username: '',
-      password: ''
-     })
-     navigation.replace('login')
+     if (form.password.length < 8) {
+      return alert('Password must be at least 8 characters')
+     } else {
+       fetch('http://localhost:3001/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accepts': 'application/json'
+        },
+        body: JSON.stringify(form)
+       })
+        .then(res => {
+          if(res.ok) {
+            res.json()
+            .then(data => {
+              if (data.Error) return alert(data.Error)
+              // console.log(data)
+              setForm({
+               name: '',
+               email: '',
+               username: '',
+               password: ''
+              })
+              navigation.replace('login')
+            })
+          } else {
+            res.json()
+            .then(data => alert(data.Error))
+          }
+        })
+     }
   }
 
   return (
