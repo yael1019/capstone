@@ -13,10 +13,10 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
     <View style={styles.topHalf}>
-      <Button title='Log In' style={styles.logIn} onPress={() => navigation.replace('login')}/>
+      <Button title='Log In' style={styles.logIn} onPress={() => navigation.navigate('LoginScreen')}/>
     </View>
     <View style={styles.bottomHalf}>
-      <Button title='Create Account' style={styles.createAccount} onPress={() => navigation.replace('createAccount')}/>
+      <Button title='Create Account' style={styles.createAccount} onPress={() => navigation.navigate('CreateAccountScreen')}/>
     </View>
   </View>
   )

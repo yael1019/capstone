@@ -8,10 +8,22 @@ import CreateAccountScreen from './screens/CreateAccountScreen'
 import ServiceScreen from './screens/ServiceScreen'
 import { UserContext } from './UserContext'
 import * as SecureStore from 'expo-secure-store';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import AppointmentScreen from './screens/AppointmentScreen'
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 // export const UserContext = createContext()
+
+function MyTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name='ServiceScreen' component={ServiceScreen}/>
+      <Tab.Screen name='AppointmentScreen' component={AppointmentScreen} />
+    </Tab.Navigator>
+  )
+}
 
 const StackNavigator = () => {
   const [currentUser, setCurrentUser] = useState(null)
@@ -28,7 +40,7 @@ const StackNavigator = () => {
           }
           const res = await fetch('http://localhost:3001/check_token', { headers })
           const data = await res.json()
-          console.log(data)
+          // console.log(data)
           setCurrentUser(data.user)
           setLoaded(true)
         }  else {
@@ -50,13 +62,14 @@ const StackNavigator = () => {
           !currentUser
           ?
           <>
-            <Stack.Screen name='home' component={HomeScreen}/>
-            <Stack.Screen name='login' component={LoginScreen}/>
-            <Stack.Screen name='createAccount' component={CreateAccountScreen}/>
+            <Stack.Screen name='HomeScreen' component={HomeScreen}/>
+            <Stack.Screen name='LoginScreen' component={LoginScreen}/>
+            <Stack.Screen name='CreateAccountScreen' component={CreateAccountScreen}/>
           </>
           :
           <>
-            <Stack.Screen name='service' component={ServiceScreen}/>
+            <Stack.Screen name='MyTabs' component={MyTabs} options={{ headerShown: false }}/>
+            <Stack.Screen name='ServiceScreen' component={ServiceScreen}/>
           </>
         }
       </Stack.Navigator>

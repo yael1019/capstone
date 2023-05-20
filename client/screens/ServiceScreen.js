@@ -10,7 +10,7 @@ const ServiceScreen = ({ navigation }) => {
     function handleLogout() {
         setCurrentUser(null)
         SecureStore.deleteItemAsync('token')
-        navigation.replace('home')
+        navigation.replace('HomeScreen')
     }
   return (
     <View>
