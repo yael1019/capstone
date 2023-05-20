@@ -118,7 +118,7 @@ class Appointment(db.Model):
     specialist_id = db.Column(db.Integer, db.ForeignKey('specialists.id'), nullable=False)
     service_id = db.Column(db.Integer, db.ForeignKey('services.id'), nullable=False)
 
-    def __init__(self, user_id, specialist_id, service_id, notes=None, date=None, time=None,):
+    def __init__(self, user_id, specialist_id, service_id, date=None, time=None, notes=None):
         self.user_id = user_id
         self.specialist_id = specialist_id
         self.service_id = service_id

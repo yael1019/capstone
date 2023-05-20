@@ -1,10 +1,12 @@
 import { View, Text, ScrollView, SafeAreaView, Pressable, TextInput, StyleSheet, Platform, TouchableOpacity } from 'react-native'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { SelectList } from 'react-native-dropdown-select-list'
 import DateTimePicker from '@react-native-community/datetimepicker';
 // import { TouchableOpacity } from 'react-native-web';
+import { UserContext } from '../UserContext';
 
 const ServicePage = ({ navigation, route }) => {
+    const [currentUser, setCurrentUser] = useContext(UserContext)
     const {service} = route.params
     const [specialist, setSpecialist] = useState([])
     const [selected, setSelected] = useState('')
@@ -33,8 +35,36 @@ const ServicePage = ({ navigation, route }) => {
     const confirmDate = () => {
         setAptDate(date.toDateString())
         toggleDatePicker()
-        console.log(aptDate)
-        console.log(aptTime)
+        // console.log(aptDate)
+        // console.log(aptTime)
+    }
+
+    const handleSubmit = () => {
+        const form = {
+            user_id: currentUser.id,
+            specialist_id: selected,
+            service_id: service.id,
+            date: aptDate,
+            time: aptTime
+        }
+        // console.log(form)
+        fetch('http://localhost:3001/appointments', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accepts': 'application/json'
+            },
+            body: JSON.stringify(form)
+        })
+            .then(res => {
+                if(res.ok) {
+                    res.json()
+                    .then(data => console.log(data))
+                }
+            })
+        setSelected('')
+        setAptDate('')
+        setAptTime('')
     }
 
     useEffect(() => {
@@ -114,6 +144,11 @@ const ServicePage = ({ navigation, route }) => {
                     </Pressable>
                 )
             }
+        </View>
+        <View>
+            <TouchableOpacity>
+                <Text onPress={handleSubmit}>Submit</Text>
+            </TouchableOpacity>
         </View>
     </ScrollView>
     </SafeAreaView>
