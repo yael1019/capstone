@@ -10,6 +10,8 @@ import { UserContext } from './UserContext'
 import * as SecureStore from 'expo-secure-store';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AppointmentScreen from './screens/AppointmentScreen'
+import ServicePage from './screens/ServicePage'
+import ServiceCard from './screens/ServiceCard'
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -70,6 +72,7 @@ const StackNavigator = () => {
           <>
             <Stack.Screen name='MyTabs' component={MyTabs} options={{ headerShown: false }}/>
             <Stack.Screen name='ServiceScreen' component={ServiceScreen}/>
+            <Stack.Screen name='ServicePage' component={ServicePage} />
           </>
         }
       </Stack.Navigator>
