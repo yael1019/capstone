@@ -128,7 +128,7 @@ def post_appointment():
     appointment = Appointment(**request.json)
     db.session.add(appointment)
     db.session.commit()
-    return jsonify(appointment.to_dict()), 201
+    return jsonify(appointment.to_dict_2()), 201
 
 @app.patch('/appointments/<int:id>')
 def edit_appointment(id):
