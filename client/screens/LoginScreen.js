@@ -38,16 +38,16 @@ const LoginScreen = ({ navigation }) => {
             username: '',
             password: ''
           })
-          navigation.replace('service', {currentUser: currentUser})
+          navigation.replace('ServiceScreen', {currentUser: currentUser})
         } else {
           res.json()
           .then(data => alert(data.Error))
         }
       })
-    setForm({
-      username: '',
-      password: ''
-    })
+    // setForm({
+    //   username: '',
+    //   password: ''
+    // })
   }
   return (
     <ScrollView>
