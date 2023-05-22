@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, Linking } from 'react-native'
 import React, {useContext, useEffect, useState} from 'react'
 import { useNavigationState } from '@react-navigation/native'
 import { UserContext } from '../UserContext'
@@ -20,6 +20,13 @@ const ServiceScreen = ({ navigation }) => {
     <View>
       <Text>ServiceScreen</Text>
       {mappedServices}
+      <TouchableOpacity>
+        <Text
+          onPress={() => Linking.openURL('https://caspa.liaisoncas.com/applicant-ux/#/login')}
+        >
+          CASPA APPLICATION
+        </Text>
+      </TouchableOpacity>
     </View>
   )
 }
