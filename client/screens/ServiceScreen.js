@@ -6,7 +6,6 @@ import * as SecureStore from 'expo-secure-store';
 import ServiceCard from './ServiceCard'
 
 const ServiceScreen = ({ navigation }) => {
-    const [currentUser, setCurrentUser] = useContext(UserContext)
     const [services, setServices] = useState([])
 
     useEffect(() => {
@@ -17,18 +16,10 @@ const ServiceScreen = ({ navigation }) => {
 
     const mappedServices = services.map(service => <ServiceCard key={service.id} service={service} />)
     
-    function handleLogout() {
-        setCurrentUser(null)
-        SecureStore.deleteItemAsync('token')
-        navigation.replace('HomeScreen')
-    }
   return (
     <View>
       <Text>ServiceScreen</Text>
       {mappedServices}
-      <TouchableOpacity>
-        <Text onPress={handleLogout}>Log Out</Text>
-      </TouchableOpacity>
     </View>
   )
 }

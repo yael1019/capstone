@@ -113,21 +113,23 @@ class Appointment(db.Model):
     notes = db.Column(db.Text)
     date = db.Column(db.String)
     time = db.Column(db.String)
+    completed = db.Column(db.String)
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     specialist_id = db.Column(db.Integer, db.ForeignKey('specialists.id'), nullable=False)
     service_id = db.Column(db.Integer, db.ForeignKey('services.id'), nullable=False)
 
-    def __init__(self, user_id, specialist_id, service_id, date=None, time=None, notes=None):
+    def __init__(self, user_id, specialist_id, service_id, completed, date=None, time=None, notes=None):
         self.user_id = user_id
         self.specialist_id = specialist_id
         self.service_id = service_id
         self.notes = notes
         self.date = date
         self.time = time
+        self.completed = completed
 
     def __repr__(self):
-        return f'<Appointment id={self.id} date={self.date} time={self.time} user_id={self.user_id} specialist_id={self.specialist_id} service_id={self.service_id}>'
+        return f'<Appointment id={self.id} date={self.date} time={self.time} user_id={self.user_id} specialist_id={self.specialist_id} service_id={self.service_id} completed={self.completed}>'
 
     def to_dict(self):
         return {
@@ -137,7 +139,8 @@ class Appointment(db.Model):
             "time": self.time,
             "user_id": self.user_id,
             "specialist_id": self.specialist_id,
-            "service_id": self.service_id
+            "service_id": self.service_id,
+            "completed": self.completed
         }
 
     def to_dict_2(self):
@@ -148,5 +151,6 @@ class Appointment(db.Model):
             "time": self.time,
             "user": self.user.name,
             "specialist": self.specialist.name,
-            "service_id": self.service.name
+            "service": self.service.name,
+            "completed": self.completed
         }

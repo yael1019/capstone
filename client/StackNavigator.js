@@ -11,7 +11,10 @@ import * as SecureStore from 'expo-secure-store';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AppointmentScreen from './screens/AppointmentScreen'
 import ServicePage from './screens/ServicePage'
-import ServiceCard from './screens/ServiceCard'
+import AppointmentPage from './screens/AppointmentPage'
+import NotesScreen from './screens/NotesScreen'
+import NotesPage from './screens/NotesPage'
+import SettingsScreen from './screens/SettingsScreen'
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -23,12 +26,15 @@ function MyTabs() {
     <Tab.Navigator>
       <Tab.Screen name='ServiceScreen' component={ServiceScreen}/>
       <Tab.Screen name='AppointmentScreen' component={AppointmentScreen} />
+      <Tab.Screen name='NotesScreen' component={NotesScreen}/>
+      <Tab.Screen name='SettingsScreen' component={SettingsScreen} />
     </Tab.Navigator>
   )
 }
 
 const StackNavigator = () => {
   const [currentUser, setCurrentUser] = useState(null)
+  const [currentApts, setCurrentApts] = useState([])
   const [loaded, setLoaded] = useState(false)
   // console.log(currentUser)
 
@@ -52,13 +58,22 @@ const StackNavigator = () => {
       checkToken()
   }, [])
 
+  useEffect(() => {
+    console.log('Stack', currentUser)
+    if(currentUser) {
+    fetch(`http://localhost:3001/appointments/3/${currentUser.id}`)
+      .then(res => res.json())
+      .then(data => setCurrentApts(data))
+    }
+  }, [currentUser])
+
   if (!loaded) {
     return <Text>Loading. . . </Text>
   }
 
   return (
     // <Stack.Navigator screenOptions={{headerShown: false}}>
-    <UserContext.Provider value={[currentUser, setCurrentUser]}>
+    <UserContext.Provider value={[currentUser, setCurrentUser, currentApts, setCurrentApts]}>
       <Stack.Navigator>
         {
           !currentUser
@@ -73,6 +88,8 @@ const StackNavigator = () => {
             <Stack.Screen name='MyTabs' component={MyTabs} options={{ headerShown: false }}/>
             <Stack.Screen name='ServiceScreen' component={ServiceScreen}/>
             <Stack.Screen name='ServicePage' component={ServicePage} />
+            <Stack.Screen name='AppointmentPage' component={AppointmentPage} />
+            <Stack.Screen name='NotesPage' component={NotesPage} />
           </>
         }
       </Stack.Navigator>
