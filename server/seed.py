@@ -347,6 +347,225 @@ if __name__ == '__main__':
         
         db.session.commit()
 
+        apts = Appointment.query.all()
+        for apt in apts:
+            if apt.completed == 'yes':
+                if apt.service_id == 1:
+                    apt.notes = """
+                        Courses
+                            - Pre-requisites:
+                                - Completed
+                            - Spanish – strongly recommend taking at least one semester. Preferably, during the Summer session. Can be from a Community College and taken online is fine. Although not required by some programs, it is highly desirable. This one course will make you more competitive.
+                            - Need Medical Terminology – you can take any course online but here is one we recommend:
+                            https://extension.ucsd.edu/courses-and-programs/medical-terminology-an-anatomy-and-physiology- approach
+
+                        PA Programs
+                            - Preferred PA Programs are in New York, but really you can apply to any of the programs in the northeast down to Florida. That doesn’t mean you couldn’t apply elsewhere, but you will have a better chance with east coast programs.
+                            - Certainly you need to pay attention to the requirements for patient care hours as some programs do have minimum requirements.
+                            - Once you have some exposure with a PA and can write about it in a Personal Statement as well as getting an LOR from a PA, you really should be able to apply to any PA Program and you should only need to apply to about 6 programs
+                            - When reviewing programs, please don’t pay attention to “applicant profiles” or anything that talks about what the average applicant has. This is not helpful information and is very misleading.
+                            - When you are choosing programs, do not use things like “PANCE Pass Rates” to make your decision. Additionally, don’t go for the top name programs. It does NOT matter where you go to PA School when it comes to finding a job. And you will never make more money because of the program you attend. When you see schools that have “Provisional” or “Probationary” status, those are okay to apply to.
+                        
+                        Information Sessions
+                            - Thinking about PA Programs you plan to apply to and look up to see when they are having “Information Sessions” and start signing up for them. If they don’t have them listed on the website, email the programs and ask if they know what the dates will be in 2021 or if you can get on their mailing list for these sessions. Programs are already hosting virtual sessions.
+                            - Attend as many as possible; try to attend at least two sessions per program. They keep track of this information.
+                            - Ask a question to get noticed but be careful what you ask. Do not ask things like “why did you become a PA” or “what’s special about your program” or questions along those lines. You could always ask how their program has been affected by COVID. Check out a program’s social media (Facebook and/or Instagram) to get a bit more information about them and you might something there to ask them a question about.
+                    """
+                    # Appointment.query.where(Appointment.id == apt.id)
+                if apt.service_id == 2:
+                    apt.notes = """
+                        Personal Statement
+                            - Avoid sources like “PA Forum” and “Reddit”. People who have been accepted into a program often put up their Personal Statements and make recommendations about “what must” be in a Personal Statement. But remember, you are not that person and the statement should be about you. Also, keep in mind that thousands of other people are also reading this and taking the same recommendations and invariably, 85% of all statements sound very much alike.
+                            - The statement accounts for about 50 percent of a programs decision to grant an interview. VERY important. Make it personal and should include:
+                                - Why Medicine
+                                - How did you find out about the PA Career?
+                                    - What research about the PA Career did you do after learning of it? 
+                                - Why PA?
+                            - I said I will help you with another draft of your personal statement.
+                    """
+                    # Appointment.query.where(Appointment.id == apt.id)
+                if apt.service_id == 3:
+                    apt.notes = """
+                        Shadowing
+                            - Remember, when working around PA’s, that time does count as shadowing. You do not need to have a formal agreement for it to count as shadowing. This is why it is imperative that you work alongside a PA and why we strongly recommend getting a job as an ER Tech or Medical Assistant.
+                            - Virtual shadowing was accepted last cycle and we expect the same for this cycle.
+                            - Keep an accurate log of all shadowing (see attached excel spreadsheet for example of log). I talked to CASPA and you can group all Virtual Shadowing into one entry in CASPA but keep a personal log in case they decide to audit you – this is what I was told.
+                            - Virtual Shadowing links:
+                                - Pre-PA Pals https://www.youtube.com/channel/UC9xp_OUmz8Z1s46P4X0JHRg/featured 
+                                - Virtual Shadowing List https://www.instagram.com/virtualshadowinglist/
+                                - Virtual Shadowing List – Facebook https://www.facebook.com/VirtualShadowingLIST
+                                - Physician Assistant Shadowing Network https://www.facebook.com/groups/shadowPA/ 
+                                - https://www.instagram.com/ap.the.pac/
+                        
+                        Volunteer – Keep up Volunteer Hours:
+                            - Strongly recommend a free clinic to work out of maybe one day a week. This is the preferred source for volunteer hours. This most recent cycle we found this to be a common trend amongst the programs. Also, free clinics are often staffed with mid-level providers and this is good for your observations of that role. Just search the name of your city and “free clinic” and you will find them.
+                            - Contact your local County Health Department for and see if you can get involved with COVID testing or vaccination administration.
+                            - Feeding America https://www.feedingamerica.org/
+                            - Team Rubicon https://teamrubiconusa.org/relief/
+                            - Google “phone calls for isolated seniors” in your area. There are different groups in each state but so many are doing this program and you can do this right from your home.
+                            - It’s not about the number of hours but a consistency with volunteering. Twice a month is great.
+                    """
+                    # Appointment.query.where(Appointment.id == apt.id)
+                if apt.service_id == 4:
+                    apt.notes = """
+                        Shadowing
+                            - Remember, when working around PA’s, that time does count as shadowing. You do not need to have a formal agreement for it to count as shadowing. This is why it is imperative that you work alongside a PA and why we strongly recommend getting a job as an ER Tech or Medical Assistant.
+                            - Virtual shadowing was accepted last cycle and we expect the same for this cycle.
+                            - Keep an accurate log of all shadowing (see attached excel spreadsheet for example of log). I talked to CASPA and you can group all Virtual Shadowing into one entry in CASPA but keep a personal log in case they decide to audit you – this is what I was told.
+                            - Virtual Shadowing links:
+                                - Pre-PA Pals https://www.youtube.com/channel/UC9xp_OUmz8Z1s46P4X0JHRg/featured 
+                                - Virtual Shadowing List https://www.instagram.com/virtualshadowinglist/
+                                - Virtual Shadowing List – Facebook https://www.facebook.com/VirtualShadowingLIST
+                                - Physician Assistant Shadowing Network https://www.facebook.com/groups/shadowPA/ 
+                                - https://www.instagram.com/ap.the.pac/
+                        
+                        Volunteer – Keep up Volunteer Hours:
+                            - Strongly recommend a free clinic to work out of maybe one day a week. This is the preferred source for volunteer hours. This most recent cycle we found this to be a common trend amongst the programs. Also, free clinics are often staffed with mid-level providers and this is good for your observations of that role. Just search the name of your city and “free clinic” and you will find them.
+                            - Contact your local County Health Department for and see if you can get involved with COVID testing or vaccination administration.
+                            - Feeding America https://www.feedingamerica.org/
+                            - Team Rubicon https://teamrubiconusa.org/relief/
+                            - Google “phone calls for isolated seniors” in your area. There are different groups in each state but so many are doing this program and you can do this right from your home.
+                            - It’s not about the number of hours but a consistency with volunteering. Twice a month is great.
+
+                        LOR’s – only submit 3 unless a specific program asks for more than 3 such as a work supervisor
+                            - Professor – Science Professor – you mentioned your O-Chem Professor
+                            - M.D. – use MD from Urology
+                            - P.A. – to be competitive, you really need an LOR from a PA, but you could do two MD’s
+
+                        CASPA – Your goal should be to submit your CASPA by May 31st if at all possible in the cycle you are applying to. If not, obviously as soon as possible. Fill out CASPA as much as you can entering all information before the new cycle opens. CASPA will open the new cycle on April 29th and whether you are applying this cycle or next, fill out as much as you can. Most information rolls over into the new cycle.
+                    """
+                    # Appointment.query.where(Appointment.id == apt.id)
+                if apt.service_id == 5:
+                    apt.notes = """
+                        PA Programs
+                            - Preferred PA Programs are in New York, but really you can apply to any of the programs in the northeast down to Florida. That doesn’t mean you couldn’t apply elsewhere, but you will have a better chance with east coast programs.
+                            - Certainly you need to pay attention to the requirements for patient care hours as some programs do have minimum requirements.
+                            - Once you have some exposure with a PA and can write about it in a Personal Statement as well as getting an LOR from a PA, you really should be able to apply to any PA Program and you should only need to apply to about 6 programs
+                            - When reviewing programs, please don’t pay attention to “applicant profiles” or anything that talks about what the average applicant has. This is not helpful information and is very misleading.
+                            - When you are choosing programs, do not use things like “PANCE Pass Rates” to make your decision. Additionally, don’t go for the top name programs. It does NOT matter where you go to PA School when it comes to finding a job. And you will never make more money because of the program you attend. When you see schools that have “Provisional” or “Probationary” status, those are okay to apply to.
+                        
+                        Information Sessions
+                            - Thinking about PA Programs you plan to apply to and look up to see when they are having “Information Sessions” and start signing up for them. If they don’t have them listed on the website, email the programs and ask if they know what the dates will be in 2021 or if you can get on their mailing list for these sessions. Programs are already hosting virtual sessions.
+                            - Attend as many as possible; try to attend at least two sessions per program. They keep track of this information.
+                            - Ask a question to get noticed but be careful what you ask. Do not ask things like “why did you become a PA” or “what’s special about your program” or questions along those lines. You could always ask how their program has been affected by COVID. Check out a program’s social media (Facebook and/or Instagram) to get a bit more information about them and you might something there to ask them a question about.
+                    """
+                    # Appointment.query.where(Appointment.id == apt.id)
+                if apt.service_id == 6:
+                    apt.notes = """
+                        PCE – Patient Care Experience Hours
+                        - Currently scheduled to start training for MA/Scribe at an Urgent Care Center on Monday, 4/19.
+                            - You will need time working around PA’s to write about in your Personal Statement so you can positively show you understand the role. Once you’ve had a couple of days, we can put this into your Personal Statement. Just observe the types of patients the PA’s are seeing; age groups, types of complaints, common treatments.
+                            - Time spent working with PA’s can also be counted as shadowing. Observe a PA while they are examining a patient – that is shadowing time; assist a PA with anything like helping the PA while they suture, place an IV or any other procedure and that time is also considered shadowing; as the PA explains anything – explaining about a particular test (X-ray, EKG, blood test, etc), or if the PA is explaining about a particular medication or generally explaining anything that is part of healthcare, that time is also considered shadowing and you need to keep track of this time.
+                        - Spending time with PA’s, you should develop relationships that can turn into Letters of Recommendation.
+                            - Previous experience was as an MA for a Urologist.
+
+                        Shadowing
+                            - Remember, when working around PA’s, that time does count as shadowing. You do not need to have a formal agreement for it to count as shadowing. This is why it is imperative that you work alongside a PA and why we strongly recommend getting a job as an ER Tech or Medical Assistant.
+                            - Virtual shadowing was accepted last cycle and we expect the same for this cycle.
+                            - Keep an accurate log of all shadowing (see attached excel spreadsheet for example of log). I talked to CASPA and you can group all Virtual Shadowing into one entry in CASPA but keep a personal log in case they decide to audit you – this is what I was told.
+                            - Virtual Shadowing links:
+                                - Pre-PA Pals https://www.youtube.com/channel/UC9xp_OUmz8Z1s46P4X0JHRg/featured 
+                                - Virtual Shadowing List https://www.instagram.com/virtualshadowinglist/
+                                - Virtual Shadowing List – Facebook https://www.facebook.com/VirtualShadowingLIST
+                                - Physician Assistant Shadowing Network https://www.facebook.com/groups/shadowPA/ 
+                                - https://www.instagram.com/ap.the.pac/
+                        
+                        Volunteer – Keep up Volunteer Hours:
+                            - Strongly recommend a free clinic to work out of maybe one day a week. This is the preferred source for volunteer hours. This most recent cycle we found this to be a common trend amongst the programs. Also, free clinics are often staffed with mid-level providers and this is good for your observations of that role. Just search the name of your city and “free clinic” and you will find them.
+                            - Contact your local County Health Department for and see if you can get involved with COVID testing or vaccination administration.
+                            - Feeding America https://www.feedingamerica.org/
+                            - Team Rubicon https://teamrubiconusa.org/relief/
+                            - Google “phone calls for isolated seniors” in your area. There are different groups in each state but so many are doing this program and you can do this right from your home.
+                            - It’s not about the number of hours but a consistency with volunteering. Twice a month is great.
+                    """
+                    # Appointment.query.where(Appointment.id == apt.id)
+                if apt.service_id == 7:
+                    apt.notes = """
+                        PACAT – the goal is a total combined score (Verbal & Quantitative) of 300 or greater
+                            - When you take the PACAT, if your combined score is over 300, you would not need to retake. You will not get a higher preference from the admissions board for a high score. Or only apply to those that do not require.
+                            - If the PA Program(s) you are applying to do not require the PACAT, do not take. It will not be taken into account when factoring your application.
+                            - Some helpful study aides if you decide to take the GRE:
+                            - Try Greg Mat for study guide https://www.youtube.com/channel/UCktwzce9ncy_K78l1KBZkYQ
+                            - Magoosh has a free GRE Practice test (40 questions) https://magoosh.com/gre/gre‐practice‐test/
+                            - Kaplan also has a free GRE Practice test https://www.kaptest.com/gre/free/free‐gre‐practice‐test
+                    """
+                    # Appointment.query.where(Appointment.id == apt.id)
+                if apt.service_id == 8:
+                    apt.notes = """
+                        GRE – the goal is a total combined score (Verbal & Quantitative) of 300 or greater
+                            - When you take the GRE, if your combined score is over 300, you would not need to retake. You will not get a higher preference from the admissions board for a high score. Or only apply to those that do not require.
+                            - If the PA Program(s) you are applying to do not require the GRE, do not take. It will not be taken into account when factoring your application.
+                            - Some helpful study aides if you decide to take the GRE:
+                            - Try Greg Mat for study guide https://www.youtube.com/channel/UCktwzce9ncy_K78l1KBZkYQ
+                            - Magoosh has a free GRE Practice test (40 questions) https://magoosh.com/gre/gre‐practice‐test/
+                            - Kaplan also has a free GRE Practice test https://www.kaptest.com/gre/free/free‐gre‐practice‐test
+                    """
+                    # Appointment.query.where(Appointment.id == apt.id)
+                if apt.service_id == 9:
+                    apt.notes = """
+                        Shadowing
+                            - Remember, when working around PA’s, that time does count as shadowing. You do not need to have a formal agreement for it to count as shadowing. This is why it is imperative that you work alongside a PA and why we strongly recommend getting a job as an ER Tech or Medical Assistant.
+                            - Virtual shadowing was accepted last cycle and we expect the same for this cycle.
+                            - Keep an accurate log of all shadowing (see attached excel spreadsheet for example of log). I talked to CASPA and you can group all Virtual Shadowing into one entry in CASPA but keep a personal log in case they decide to audit you – this is what I was told.
+                            - Virtual Shadowing links:
+                                - Pre-PA Pals https://www.youtube.com/channel/UC9xp_OUmz8Z1s46P4X0JHRg/featured 
+                                - Virtual Shadowing List https://www.instagram.com/virtualshadowinglist/
+                                - Virtual Shadowing List – Facebook https://www.facebook.com/VirtualShadowingLIST
+                                - Physician Assistant Shadowing Network https://www.facebook.com/groups/shadowPA/ 
+                                - https://www.instagram.com/ap.the.pac/
+                        
+                        Volunteer – Keep up Volunteer Hours:
+                            - Strongly recommend a free clinic to work out of maybe one day a week. This is the preferred source for volunteer hours. This most recent cycle we found this to be a common trend amongst the programs. Also, free clinics are often staffed with mid-level providers and this is good for your observations of that role. Just search the name of your city and “free clinic” and you will find them.
+                            - Contact your local County Health Department for and see if you can get involved with COVID testing or vaccination administration.
+                            - Feeding America https://www.feedingamerica.org/
+                            - Team Rubicon https://teamrubiconusa.org/relief/
+                            - Google “phone calls for isolated seniors” in your area. There are different groups in each state but so many are doing this program and you can do this right from your home.
+                            - It’s not about the number of hours but a consistency with volunteering. Twice a month is great.
+
+                        LOR’s – only submit 3 unless a specific program asks for more than 3 such as a work supervisor
+                            - Professor – Science Professor – you mentioned your O-Chem Professor
+                            - M.D. – use MD from Urology
+                            - P.A. – to be competitive, you really need an LOR from a PA, but you could do two MD’s
+
+                        CASPA – Your goal should be to submit your CASPA by May 31st if at all possible in the cycle you are applying to. If not, obviously as soon as possible. Fill out CASPA as much as you can entering all information before the new cycle opens. CASPA will open the new cycle on April 29th and whether you are applying this cycle or next, fill out as much as you can. Most information rolls over into the new cycle.
+                    """
+                    # Appointment.query.where(Appointment.id == apt.id)
+                if apt.service_id == 10:
+                    apt.notes = """
+                        Shadowing
+                            - Remember, when working around PA’s, that time does count as shadowing. You do not need to have a formal agreement for it to count as shadowing. This is why it is imperative that you work alongside a PA and why we strongly recommend getting a job as an ER Tech or Medical Assistant.
+                            - Virtual shadowing was accepted last cycle and we expect the same for this cycle.
+                            - Keep an accurate log of all shadowing (see attached excel spreadsheet for example of log). I talked to CASPA and you can group all Virtual Shadowing into one entry in CASPA but keep a personal log in case they decide to audit you – this is what I was told.
+                            - Virtual Shadowing links:
+                                - Pre-PA Pals https://www.youtube.com/channel/UC9xp_OUmz8Z1s46P4X0JHRg/featured 
+                                - Virtual Shadowing List https://www.instagram.com/virtualshadowinglist/
+                                - Virtual Shadowing List – Facebook https://www.facebook.com/VirtualShadowingLIST
+                                - Physician Assistant Shadowing Network https://www.facebook.com/groups/shadowPA/ 
+                                - https://www.instagram.com/ap.the.pac/
+                        
+                        Volunteer – Keep up Volunteer Hours:
+                            - Strongly recommend a free clinic to work out of maybe one day a week. This is the preferred source for volunteer hours. This most recent cycle we found this to be a common trend amongst the programs. Also, free clinics are often staffed with mid-level providers and this is good for your observations of that role. Just search the name of your city and “free clinic” and you will find them.
+                            - Contact your local County Health Department for and see if you can get involved with COVID testing or vaccination administration.
+                            - Feeding America https://www.feedingamerica.org/
+                            - Team Rubicon https://teamrubiconusa.org/relief/
+                            - Google “phone calls for isolated seniors” in your area. There are different groups in each state but so many are doing this program and you can do this right from your home.
+                            - It’s not about the number of hours but a consistency with volunteering. Twice a month is great.
+
+                        LOR’s – only submit 3 unless a specific program asks for more than 3 such as a work supervisor
+                            - Professor – Science Professor – you mentioned your O-Chem Professor
+                            - M.D. – use MD from Urology
+                            - P.A. – to be competitive, you really need an LOR from a PA, but you could do two MD’s
+
+                        CASPA – Your goal should be to submit your CASPA by May 31st if at all possible in the cycle you are applying to. If not, obviously as soon as possible. Fill out CASPA as much as you can entering all information before the new cycle opens. CASPA will open the new cycle on April 29th and whether you are applying this cycle or next, fill out as much as you can. Most information rolls over into the new cycle.
+                    """
+                    # Appointment.query.where(Appointment.id == apt.id)
+
+        for apt in apts:
+            apt.date = 'Monday 07/03/2023'
+            apt.time = '10:30 AM'
+        
+        db.session.commit()
+
         print("Done Seeding!")
 
 
