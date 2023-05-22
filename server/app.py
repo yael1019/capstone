@@ -5,6 +5,9 @@ from flask_bcrypt import Bcrypt
 import os
 # from dotenv import load_dotenv
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, JWTManager
+import smtplib
+from email.message import EmailMessage
+import ssl
 
 #! CONFIG
 app = Flask(__name__)
@@ -153,6 +156,45 @@ def delete_appointment(id):
     user_to_dict = user.to_dict()
     user_name = user_to_dict['name']
     return jsonify(f'{user_name}\'s appointment has been deleted'), 200
+
+#! EMAILING
+
+EMAIL_ADDRESS = os.getenv('EMAIL')
+EMAIL_PASSWORD = os.getenv('PASSWORD')
+
+@app.get('/emailing/<int:id>')
+def send_email(id):
+    user = User.query.get(id)
+    apt = Appointment.query.order_by(Appointment.id.desc()).first()
+    apt_to_dict = apt.to_dict_2()
+    # print(apt_to_dict)
+    subject = 'Appointment Confirmation'
+    body = f"""
+    Hello {user.name},
+
+    This is your appointment confirmation. Your {apt_to_dict['service']} appointment is on {apt_to_dict['date']} at {apt_to_dict['time']} with {apt_to_dict['specialist']}.
+    Your appointment details can also be found on the MENTORS app on the appointmen page.
+
+    Thank you for using our services.
+    - MENTORS
+    """
+
+    # print(apt_to_dict['specialist'])
+    
+    em = EmailMessage()
+    em['From'] = EMAIL_ADDRESS
+    # em['To'] = 'yaelharosh7@gmail.com'
+    em['To'] = user.email
+    em['Subject'] = subject
+    em.set_content(body)
+
+    context = ssl.create_default_context()
+
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
+        smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+        smtp.sendmail(EMAIL_ADDRESS, user.email, em.as_string())
+    
+    return jsonify('Email Sent!'), 200
 
 if __name__ == '__main__':
     app.run(port=3001, debug=True)

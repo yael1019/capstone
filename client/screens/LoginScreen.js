@@ -25,8 +25,8 @@ const LoginScreen = ({ navigation }) => {
         'Content-Type': 'application/json',
         'Accepts': 'application/json'
       },
-      // body: JSON.stringify(form)
-      body: JSON.stringify({"username": "TimmyTom", "password": "password123"})
+      body: JSON.stringify(form)
+      // body: JSON.stringify({"username": "TimmyTom", "password": "password123"})
     })
       .then(res => {
         if(res.ok) {
@@ -60,8 +60,8 @@ const LoginScreen = ({ navigation }) => {
             autoCapitalize={false}
             onChangeText={(text) => handleChange(text, 'username')}
             onSubmitEditing={handleSubmit}
-            // value={form.username}
-            value="TimmyTom"
+            value={form.username}
+            // value="TimmyTom"
           />
           <TextInput 
             name='password'
@@ -71,8 +71,8 @@ const LoginScreen = ({ navigation }) => {
             autoCapitalize={false}
             onChangeText={(text) => handleChange(text, 'password')}
             onSubmitEditing={handleSubmit}
-            // value={form.password}
-            value="password123"
+            value={form.password}
+            // value="password123"
           />
           <TouchableOpacity>
             <Text

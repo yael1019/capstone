@@ -63,9 +63,14 @@ const ServicePage = ({ navigation, route }) => {
                     .then(data => setCurrentApts([...currentApts, data]))
                 }
             })
-        setSelected('')
+        
+        fetch(`http://localhost:3001/emailing/${currentUser.id}`)
+            .then(res => res.json())
+            .then(data => console.log(data))
+        setSelected(() => setSelected(''))
         setAptDate('')
         setAptTime('')
+        navigation.goBack()
     }
 
     useEffect(() => {

@@ -41,7 +41,7 @@ const CreateAccountScreen = ({ navigation }) => {
                username: '',
                password: ''
               })
-              navigation.replace('login')
+              navigation.replace('LoginScreen')
             })
           } else {
             res.json()
