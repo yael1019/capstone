@@ -32,7 +32,7 @@ const LoginScreen = ({ navigation }) => {
         if(res.ok) {
           res.json()
           .then(data => {
-            setCurrentUser(data)
+            setCurrentUser(data.user)
             SecureStore.setItemAsync('token', data.token)
           })
           setForm({
