@@ -5,7 +5,7 @@ import AppointmentCard from './AppointmentCard';
 
 const AppointmentScreen = () => {
   const [currentUser, setCurrentUser, currentApts, setCurrentApts] = useContext(UserContext)
-  console.log(currentApts)
+  // console.log(currentApts)
   const mappedApts = currentApts.map(apts => <AppointmentCard key={apts.id} apts={apts} />)
   return (
     <View>

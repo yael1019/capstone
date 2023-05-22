@@ -5,7 +5,7 @@ import * as SecureStore from 'expo-secure-store';
 
 const SettingsScreen = ({ navigation }) => {
     const [currentUser, setCurrentUser] = useContext(UserContext)
-     console.log('Settings',currentUser)
+    //  console.log('Settings',currentUser)
      function handleLogout() {
         setCurrentUser(null)
         SecureStore.deleteItemAsync('token')
