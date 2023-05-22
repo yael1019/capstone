@@ -123,6 +123,12 @@ def get_appointment_2(id):
     appointment = Appointment.query.get(id)
     return jsonify(appointment.to_dict_2()), 200
 
+@app.get('/appointments/3/<int:id>')
+def get_user_apt(id):
+    user = User.query.get(id)
+    appointments = user.appointments
+    return [apt.to_dict_2() for apt in appointments], 200
+
 @app.post('/appointments')
 def post_appointment():
     appointment = Appointment(**request.json)

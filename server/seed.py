@@ -340,8 +340,9 @@ if __name__ == '__main__':
         services.append(application_review)
         db.session.add_all(services)
 
+        complete = ['yes', 'no']
         for _ in range(30):
-            appointment = Appointment(random.randint(1, 10), random.randint(1, 10), random.randint(1, 10))
+            appointment = Appointment(random.randint(1, 10), random.randint(1, 10), random.randint(1, 10), random.choice(complete))
             db.session.add(appointment)
         
         db.session.commit()

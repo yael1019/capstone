@@ -6,7 +6,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { UserContext } from '../UserContext';
 
 const ServicePage = ({ navigation, route }) => {
-    const [currentUser, setCurrentUser] = useContext(UserContext)
+    const [currentUser, setCurrentUser, currentApts, setCurrentApts] = useContext(UserContext)
     const {service} = route.params
     const [specialist, setSpecialist] = useState([])
     const [selected, setSelected] = useState('')
@@ -45,7 +45,8 @@ const ServicePage = ({ navigation, route }) => {
             specialist_id: selected,
             service_id: service.id,
             date: aptDate,
-            time: aptTime
+            time: aptTime,
+            completed: 'no'
         }
         // console.log(form)
         fetch('http://localhost:3001/appointments', {
@@ -59,7 +60,7 @@ const ServicePage = ({ navigation, route }) => {
             .then(res => {
                 if(res.ok) {
                     res.json()
-                    .then(data => console.log(data))
+                    .then(data => setCurrentApts([...currentApts, data]))
                 }
             })
         setSelected('')
