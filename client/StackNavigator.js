@@ -74,12 +74,12 @@ const StackNavigator = () => {
   return (
     // <Stack.Navigator screenOptions={{headerShown: false}}>
     <UserContext.Provider value={[currentUser, setCurrentUser, currentApts, setCurrentApts]}>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
         {
           !currentUser
           ?
           <>
-            <Stack.Screen name='HomeScreen' component={HomeScreen}/>
+            <Stack.Screen name='HomeScreen' component={HomeScreen} />
             <Stack.Screen name='LoginScreen' component={LoginScreen}/>
             <Stack.Screen name='CreateAccountScreen' component={CreateAccountScreen}/>
           </>
