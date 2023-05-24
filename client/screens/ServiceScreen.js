@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   items: {
-    marginTop: 30,
+    marginTop: 23,
     flex: 1.5,
     borderTopStartRadius: 60,
     borderTopEndRadius: 60,
