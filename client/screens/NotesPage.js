@@ -1,12 +1,15 @@
-import { View, Text } from 'react-native'
+import { View, Text, ScrollView } from 'react-native'
 import React from 'react'
 
 const NotesPage = ({ route }) => {
     const {apts} = route.params
   return (
-    <View>
-      <Text>NotesPage</Text>
-    </View>
+    <ScrollView>
+      <View>
+        <Text>NotesPage</Text>
+        <Text>{ apts.notes }</Text>
+      </View>
+    </ScrollView>
   )
 }
 

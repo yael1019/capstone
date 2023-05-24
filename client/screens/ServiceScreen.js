@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Linking } from 'react-native'
+import { View, Text, TouchableOpacity, Linking, StyleSheet } from 'react-native'
 import React, {useContext, useEffect, useState} from 'react'
 import { useNavigationState } from '@react-navigation/native'
 import { UserContext } from '../UserContext'
@@ -17,7 +17,7 @@ const ServiceScreen = ({ navigation }) => {
     const mappedServices = services.map(service => <ServiceCard key={service.id} service={service} />)
     
   return (
-    <View>
+    <View style={styles.container}>
       <Text>ServiceScreen</Text>
       {mappedServices}
       <TouchableOpacity>
@@ -30,5 +30,12 @@ const ServiceScreen = ({ navigation }) => {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#ffffff'
+  }
+})
 
 export default ServiceScreen

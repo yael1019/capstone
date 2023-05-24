@@ -15,6 +15,7 @@ import AppointmentPage from './screens/AppointmentPage'
 import NotesScreen from './screens/NotesScreen'
 import NotesPage from './screens/NotesPage'
 import SettingsScreen from './screens/SettingsScreen'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -23,11 +24,72 @@ const Tab = createBottomTabNavigator();
 
 function MyTabs() {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name='ServiceScreen' component={ServiceScreen}/>
-      <Tab.Screen name='AppointmentScreen' component={AppointmentScreen} />
-      <Tab.Screen name='NotesScreen' component={NotesScreen}/>
-      <Tab.Screen name='SettingsScreen' component={SettingsScreen} />
+    <Tab.Navigator 
+    screenOptions={{
+      tabBarShowLabel: false,
+      headerShown: false,
+      tabBarStyle: {
+        backgroundColor: '#fff',
+        borderTopColor: '#f97316',
+        borderTopWidth: 1,
+        shadowOffset: {
+          width: 0,
+          height: 12,
+      },
+      shadowOpacity: 0.58,
+      shadowRadius: 16.0,
+      elevation: 24,
+      },
+      tabBarInactiveTintColor: '#f97316',
+      tabBarActiveTintColor: '#fdba74',
+    }}
+    // screenOptions={({route}) => ({
+    //   tabBarIcon: ({focused, color, size}) => {
+    //       let iconName;
+    //       let rn = route.name;
+    //       if(rn === 'ServiceScreen') {
+    //         iconName = focused ? 'home' : 'home-outline'
+    //       }
+    //       return <Ionicons name={iconName} /> 
+    //   },
+    // })}
+    >
+      <Tab.Screen name='ServiceScreen' component={ServiceScreen}
+      options={{
+        tabBarIcon: ({color, size, focused}) => {
+          let iconName;
+          focused ? iconName = 'home' : iconName = 'home-outline'
+          return <Ionicons name={iconName} color={color} size={size} />
+      }
+      }}
+      />
+      <Tab.Screen name='AppointmentScreen' component={AppointmentScreen} 
+       options={{
+        tabBarIcon: ({color, size, focused}) => {
+          let iconName;
+          focused ? iconName = 'calendar' : iconName = 'calendar-outline'
+          return <Ionicons name={iconName} color={color} size={size} />
+        }
+      }}
+      />
+      <Tab.Screen name='NotesScreen' component={NotesScreen}
+       options={{
+        tabBarIcon: ({color, size, focused}) => {
+          let iconName;
+          focused ? iconName = 'book' : iconName = 'book-outline'
+          return <Ionicons name={iconName} color={color} size={size} />
+        }
+      }}
+      />
+      <Tab.Screen name='SettingsScreen' component={SettingsScreen} 
+       options={{
+        tabBarIcon: ({color, size, focused}) => {
+          let iconName;
+          focused ? iconName = 'settings' : iconName = 'settings-outline'
+          return <Ionicons name={iconName} color={color} size={size} />
+        }
+      }}
+      />
     </Tab.Navigator>
   )
 }
@@ -59,7 +121,7 @@ const StackNavigator = () => {
   }, [])
 
   useEffect(() => {
-    console.log('Stack', currentUser)
+    // console.log('Stack', currentUser)
     if(currentUser) {
     fetch(`http://localhost:3001/appointments/3/${currentUser.id}`)
       .then(res => res.json())
