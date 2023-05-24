@@ -6,16 +6,11 @@ import {useNavigation} from '@react-navigation/native'
 const ServiceCard = ({ service }) => {
     const navigation = useNavigation()
   return (
-    <View style={styles.item}>
-        <TouchableOpacity>
-            <Text 
-            style={styles.text}
-            onPress={() => navigation.navigate('ServicePage', {
+    <View>
+        <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('ServicePage', {
                 service: service
-            })}
-            >
-                {service.name}
-            </Text>
+            })}>
+            <Text style={styles.text}> {service.name}</Text>
         </TouchableOpacity>
     </View>
   )

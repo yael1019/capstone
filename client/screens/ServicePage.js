@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, SafeAreaView, Pressable, TextInput, StyleSheet, Platform, TouchableOpacity } from 'react-native'
+import { View, Text, ScrollView, SafeAreaView, Pressable, TextInput, StyleSheet, Platform, TouchableOpacity, ImageBackground, Dimensions } from 'react-native'
 import React, { useState, useEffect, useContext } from 'react'
 import { SelectList } from 'react-native-dropdown-select-list'
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -86,22 +86,37 @@ const ServicePage = ({ navigation, route }) => {
     })
     // console.log(selected)
   return (
-    <SafeAreaView style={styles.container}>
-    <ScrollView>
-        <View>
-            <Text>{service.name}</Text>
-            <Text>{ service.about }</Text>
-            <Text>${ service.price }</Text>
+    // <SafeAreaView style={styles.container}>
+    <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.container}>
+        <ImageBackground source={require('../orange.jpeg')} style={styles.image}>
+          <TouchableOpacity>
+          <Text onPress={() => navigation.goBack()} style={styles.arrow}>←</Text>
+          </TouchableOpacity>
+          <Text style={styles.brandViewText}>{service.name}</Text>
+        </ImageBackground>
+        <View style={styles.viewContainer}>
+        <View style={styles.textContainer}>
+            {/* <Text>{service.name}</Text> */}
+            <Text style={styles.text}>{ service.about }</Text>
+            <View style={styles.line}></View>
+            <Text style={styles.title}>Book Your Appointment Today:</Text>
+            <Text style={styles.title2}>Price:  ${ service.price }</Text>
         </View>
-        <View>
+        <View style={styles.select}>
             <SelectList 
                 setSelected={(val) => setSelected(val)}
                 data={data}
                 placeholder={'Select a Physician Assistant'}
+                // style={{
+                //     // borderBottomWidth: 1,
+                //     // borderBottomColor: '#ea580c',
+                //     // height: 30,
+                // }}
             />
         </View>
-        <View>
-            <Text>Select a Date and Time</Text>
+        <View style={styles.dateTime}>
+            <Text style={styles.title2}>Select a Date and Time</Text>
             {
                 showPicker && (
                     <DateTimePicker 
@@ -141,23 +156,31 @@ const ServicePage = ({ navigation, route }) => {
                         onPress={toggleDatePicker}
                     >
                         <TextInput
-                             placeholder='Select a Date and Time'
+                             placeholder='Mon June 5 10:15AM'
                              value={aptDate}
                              onChangeText={handleAptDate}
                              editable={false}
                              onPressIn={toggleDatePicker}
+                             style={{
+                                borderBottomWidth: 1,
+                                borderBottomColor: '#ea580c',
+                                height: 30,
+                                fontSize: 16
+                             }}
                         />
                     </Pressable>
                 )
             }
         </View>
         <View>
-            <TouchableOpacity>
-                <Text onPress={handleSubmit}>Submit</Text>
+            <TouchableOpacity style={styles.buttonContainer}>
+                <Text style={styles.button} onPress={handleSubmit}>Submit</Text>
             </TouchableOpacity>
         </View>
+        </View>
+        </View>
     </ScrollView>
-    </SafeAreaView>
+    // </SafeAreaView>
   )
 }
 
@@ -165,10 +188,99 @@ export default ServicePage
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        backgroundColor: '#fff',
+        // height: Dimensions.get('window').he
     },
     datePicker: {
         height: 200,
-        marginTop: -10
+        marginTop: -10,
+        // borderWidth: 1,
+        // borderBottomColor: 'black'
     },
+    arrow: {
+        fontSize: 30,
+        marginTop: 55,
+        marginLeft: 10,
+      },
+      image: {
+        height: Dimensions.get('window').height / 5.5
+      },
+      brandViewText: {
+        color: '#ffffff',
+        fontSize: 20,
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        marginTop: -20,
+        textTransform: 'uppercase'
+      },
+      viewContainer: {
+        backgroundColor: '#ffffff',
+        flex: 1.5,
+        justifyContent: 'center',
+        // alignItems: 'center',
+        borderTopStartRadius: 60,
+        borderTopEndRadius: 60,
+        bottom: 60,
+        // height: Dimensions.get('window').height ,
+        paddingTop: 30,
+        paddingLeft: 10,
+        paddingRight: 10,
+      },
+      textContainer: {
+        marginBottom: 20
+      },
+      text: {
+        fontSize: 15,
+        padding: 5
+      },
+      title: {
+        fontSize: 18,
+        padding: 5,
+        fontWeight: 'bold',
+        alignSelf: 'center',
+      },
+      title2: {
+        fontSize: 16,
+        padding: 5,
+        fontWeight: 'bold',
+        // alignSelf: 'center'
+      },
+      buttonContainer: {
+        // flex: 0.12,
+        backgroundColor: '#ea580c',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 30,
+        // marginBottom: 10,
+        borderRadius: 8,
+        // width: 100
+        width: Dimensions.get('window').width / 4,
+        shadowOffset: {width: 1, height: 10},
+        shadowOpacity: 0.4,
+        shadowRadius: 3,
+        elevation: 15,
+        // shadowColor: '#fdba74',
+        alignSelf: 'center'
+      },
+      button: {
+        // alignSelf: 'center'
+        // marginHorizontal: 30,
+        // paddingBottom: 30,
+        color: '#ffffff',
+        fontSize: 18,
+      },
+      select: {
+        paddingBottom: 20
+      },
+      dateTime: {
+        paddingBottom: 20
+      },
+      line: {
+        borderTopWidth: 1.5,
+        borderTopColor: '#ea580c',
+        // shadowOffset: {width: 1, height: -10},
+        // shadowOpacity: 0.9,
+        // shadowRadius: 7,
+      },
 })
