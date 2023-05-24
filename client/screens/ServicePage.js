@@ -87,8 +87,8 @@ const ServicePage = ({ navigation, route }) => {
     // console.log(selected)
   return (
     // <SafeAreaView style={styles.container}>
-    <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
+            <ScrollView showsVerticalScrollIndicator={false}>
         <ImageBackground source={require('../orange.jpeg')} style={styles.image}>
           <TouchableOpacity>
           <Text onPress={() => navigation.goBack()} style={styles.arrow}>←</Text>
@@ -178,8 +178,8 @@ const ServicePage = ({ navigation, route }) => {
             </TouchableOpacity>
         </View>
         </View>
-        </View>
     </ScrollView>
+        </View>
     // </SafeAreaView>
   )
 }
