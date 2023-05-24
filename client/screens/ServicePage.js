@@ -86,7 +86,7 @@ const ServicePage = ({ navigation, route }) => {
     })
     // console.log(selected)
   return (
-    <SafeAreaView style={styles.constainer}>
+    <SafeAreaView style={styles.container}>
     <ScrollView>
         <View>
             <Text>{service.name}</Text>
@@ -164,7 +164,7 @@ const ServicePage = ({ navigation, route }) => {
 export default ServicePage
 
 const styles = StyleSheet.create({
-    constainer: {
+    container: {
         flex: 1
     },
     datePicker: {
