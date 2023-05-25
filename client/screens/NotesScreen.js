@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     // backgroundColor: '#ffffff'
-    backgroundColor: '#E8EAED'
+    backgroundColor: '#E8EAED',
   },
   wrapper: {
     paddingTop: 80,

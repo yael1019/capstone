@@ -34,8 +34,8 @@ const SettingsScreen = ({ navigation }) => {
           <Text style={styles.text}> { currentUser.username }</Text>
           </Text>
         </View>
-      <TouchableOpacity style={styles.buttonContainer}>
-        <Text style={styles.button} onPress={handleLogout}>Log Out</Text>
+      <TouchableOpacity style={styles.buttonContainer} onPress={handleLogout}>
+        <Text style={styles.button}>Log Out</Text>
       </TouchableOpacity>
       </View>
     </View>

@@ -126,8 +126,11 @@ const ServicePage = ({ navigation, route }) => {
                         onChange={onChange}
                         style={styles.datePicker}
                         // maximumDate={new Date(2023-30-6)}
-                        minimumDate={new Date()}
+                        // minimumDate={new Date()}
                         // is24Hour={true}
+                        // minDate={new Date('2023-05-25')}
+                        // maxDate={new Date('2023-05-26')}
+                        // dateFormat='MM/dd/yyyy h:mm aa'
                     />
                 )
             }
