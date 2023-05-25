@@ -21,7 +21,7 @@ const ServiceScreen = ({ navigation }) => {
     <View style={styles.container}>
     <ImageBackground source={require('../orange.jpeg')} style={styles.image}>
       <View style={styles.wrapper}>
-        <Text style={styles.title}>Services</Text>
+        <Text style={styles.title}>SERVICES</Text>
       </View>
       </ImageBackground>
       <View style={styles.items}>
