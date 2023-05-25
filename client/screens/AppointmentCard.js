@@ -6,10 +6,13 @@ const AppointmentCard = ({apts}) => {
     const navigation = useNavigation()
   return (
     <View>
-        <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('AppointmentPage', {apts: apts})}>
+        <View style={styles.item}>
             {/* <Text>Appointment</Text> */}
             <Text style={styles.text}>{ apts.service }</Text>
-        </TouchableOpacity>
+            <Text style={styles.text}>{ apts.specialist }</Text>
+            <Text style={styles.text}>{ apts.date }</Text>
+            <Text style={styles.text}>{ apts.time }</Text>
+        </View>
     </View>
   )
 }
@@ -18,8 +21,8 @@ const styles = StyleSheet.create({
   item: {
     backgroundColor: '#fff',
     padding: 15,
-    borderRadius: 10,
-    flexDirection: 'row',
+    borderRadius: 20,
+    flexDirection: 'column',
     // alignItems: 'center',
     marginBottom: 20,
     marginLeft: 15,

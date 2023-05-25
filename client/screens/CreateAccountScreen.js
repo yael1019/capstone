@@ -1,7 +1,9 @@
 import { View, Text, TextInput, ScrollView, Keyboard, TouchableOpacity, StyleSheet, ImageBackground, Dimensions } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { UserContext } from '../UserContext'
 
 const CreateAccountScreen = ({ navigation }) => {
+  const [currentUser, setCurrentUser, currentApts, setCurrentApts, URL] = useContext(UserContext)
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -17,11 +19,11 @@ const CreateAccountScreen = ({ navigation }) => {
   }
 
   function handleSubmit() {
-     console.log('submitting')
+    //  console.log('submitting')
      if (form.password.length < 8) {
       return alert('Password must be at least 8 characters')
      } else {
-       fetch('http://localhost:3001/users', {
+       fetch(`${URL}/users`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

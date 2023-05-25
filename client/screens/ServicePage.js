@@ -6,7 +6,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { UserContext } from '../UserContext';
 
 const ServicePage = ({ navigation, route }) => {
-    const [currentUser, setCurrentUser, currentApts, setCurrentApts] = useContext(UserContext)
+    const [currentUser, setCurrentUser, currentApts, setCurrentApts, URL] = useContext(UserContext)
     const {service} = route.params
     const [specialist, setSpecialist] = useState([])
     const [selected, setSelected] = useState('')
@@ -49,7 +49,7 @@ const ServicePage = ({ navigation, route }) => {
             completed: 'no'
         }
         // console.log(form)
-        fetch('http://localhost:3001/appointments', {
+        fetch(`${URL}/appointments`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ const ServicePage = ({ navigation, route }) => {
                 }
             })
         
-        fetch(`http://localhost:3001/emailing/${currentUser.id}`)
+        fetch(`${URL}/emailing/${currentUser.id}`)
             .then(res => res.json())
             .then(data => console.log(data))
         setSelected(() => setSelected(''))
@@ -74,7 +74,7 @@ const ServicePage = ({ navigation, route }) => {
     }
 
     useEffect(() => {
-        fetch('http://localhost:3001/specialists')
+        fetch(`${URL}/specialists`)
             .then(resp => resp.json())
             .then(data => setSpecialist(data))
     }, [])
@@ -193,6 +193,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
+        // fontFamily: 'Cochin'
         // height: Dimensions.get('window').he
     },
     datePicker: {
@@ -227,15 +228,16 @@ const styles = StyleSheet.create({
         bottom: 60,
         // height: Dimensions.get('window').height ,
         paddingTop: 30,
-        paddingLeft: 10,
-        paddingRight: 10,
+        paddingLeft: 15,
+        paddingRight: 15,
       },
       textContainer: {
         marginBottom: 20
       },
       text: {
         fontSize: 15,
-        padding: 5
+        padding: 5,
+        // fontFamily: 'Cochin'
       },
       title: {
         fontSize: 18,
@@ -280,8 +282,8 @@ const styles = StyleSheet.create({
         paddingBottom: 20
       },
       line: {
-        borderTopWidth: 1.5,
-        borderTopColor: '#ea580c',
+        // borderTopWidth: 1.5,
+        // borderTopColor: '#ea580c',
         // shadowOffset: {width: 1, height: -10},
         // shadowOpacity: 0.9,
         // shadowRadius: 7,

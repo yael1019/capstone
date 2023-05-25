@@ -55,8 +55,8 @@ const styles = StyleSheet.create({
       bottom: 60,
       // height: Dimensions.get('window').height ,
       paddingTop: 30,
-      paddingLeft: 10,
-      paddingRight: 10,
+      paddingLeft: 15,
+      paddingRight: 15,
     },
     textContainer: {
       marginBottom: 20

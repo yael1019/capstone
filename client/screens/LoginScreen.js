@@ -5,7 +5,7 @@ import { UserContext } from '../UserContext';
 import { NativeBaseProvider, Box } from "native-base";
 
 const LoginScreen = ({ navigation }) => {
-  const [currentUser, setCurrentUser] = useContext(UserContext)
+  const [currentUser, setCurrentUser, currentApts, setCurrentApts, URL] = useContext(UserContext)
   const [form, setForm] = useState({
     username: '',
     password: ''
@@ -20,7 +20,7 @@ const LoginScreen = ({ navigation }) => {
 
   function handleSubmit() {
     // console.log('submitting')
-    fetch('http://localhost:3001/login', {
+    fetch(`${URL}/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
