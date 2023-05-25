@@ -56,7 +56,7 @@ const LoginScreen = ({ navigation }) => {
     // <NativeBaseProvider>
     <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.container}>
       {/* <SafeAreaView> */}
-        <ImageBackground source={require('../orange.jpeg')} style={styles.image}>
+        <ImageBackground source={require('../pink.webp')} style={styles.image}>
           <TouchableOpacity>
           <Text onPress={() => navigation.goBack()} style={styles.arrow}>←</Text>
           </TouchableOpacity>
@@ -65,7 +65,8 @@ const LoginScreen = ({ navigation }) => {
       {/* </SafeAreaView> */}
       <View style={styles.viewContainer}>
             <View style={{padding: 40}}>
-              <Text style={{color: '#c2410c', fontSize: 34}}>LOG IN</Text>
+              {/* <Text style={{color: '#c2410c', fontSize: 34}}>LOG IN</Text> */}
+              <Text style={{color: '#be123c', fontSize: 34}}>LOG IN</Text>
             </View>
         <View style={{marginLeft: 50}}>
           <Text style={styles.labels}>Username:</Text>
@@ -140,7 +141,8 @@ const styles = StyleSheet.create({
     marginTop: -20
   },
   textInput: {
-    borderBottomColor: '#ea580c',
+    // borderBottomColor: '#ea580c',
+    borderBottomColor: '#be123c',
     // color: 'white',
     // backgroundColor: 'red',
     fontSize: 18,
@@ -157,7 +159,8 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     // flex: 0.12,
-    backgroundColor: '#ea580c',
+    // backgroundColor: '#ea580c',
+    backgroundColor: '#be123c',
     justifyContent: 'center',
     alignItems: 'center',
     height: 30,

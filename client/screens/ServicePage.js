@@ -89,7 +89,7 @@ const ServicePage = ({ navigation, route }) => {
     // <SafeAreaView style={styles.container}>
         <View style={styles.container}>
             <ScrollView showsVerticalScrollIndicator={false}>
-        <ImageBackground source={require('../orange.jpeg')} style={styles.image}>
+        <ImageBackground source={require('../blue2.jpeg')} style={styles.image}>
           <TouchableOpacity>
           <Text onPress={() => navigation.goBack()} style={styles.arrow}>←</Text>
           </TouchableOpacity>
@@ -166,7 +166,7 @@ const ServicePage = ({ navigation, route }) => {
                              onPressIn={toggleDatePicker}
                              style={{
                                 borderBottomWidth: 1,
-                                borderBottomColor: '#ea580c',
+                                borderBottomColor: '#3a86ff',
                                 height: 30,
                                 fontSize: 16
                              }}
@@ -253,7 +253,7 @@ const styles = StyleSheet.create({
       },
       buttonContainer: {
         // flex: 0.12,
-        backgroundColor: '#ea580c',
+        backgroundColor: '#3a86ff',
         justifyContent: 'center',
         alignItems: 'center',
         height: 30,

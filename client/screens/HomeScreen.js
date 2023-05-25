@@ -19,7 +19,8 @@ const HomeScreen = ({ navigation }) => {
   return (
     <NativeBaseProvider>
         <View style={styles.container}>
-          <ImageBackground source={require('../orange.jpeg')} style={styles.image}>
+          {/* <ImageBackground source={require('../orange.jpeg')} style={styles.image}> */}
+          <ImageBackground source={require('../purblue.jpeg')} style={styles.image}>
             <View style={styles.brandView}>
               {/* <Icon name='location-sharp' style={styles.icon} /> */}
               <Text style={styles.brandViewText}>MENTORS</Text>
@@ -27,7 +28,8 @@ const HomeScreen = ({ navigation }) => {
           </ImageBackground>
           <View style={styles.bottomView}>
             <View style={{padding: 40}}>
-              <Text style={{color: '#c2410c', fontSize: 34}}>Welcome</Text>
+              {/* <Text style={{color: '#c2410c', fontSize: 34}}>Welcome</Text> */}
+              <Text style={{color: '#8338ec', fontSize: 34}}>Welcome</Text>
             </View>
               <View style={styles.touchables}>
                   <TouchableOpacity style={styles.loginContainer} onPress={() => navigation.navigate('LoginScreen')}>
@@ -86,7 +88,8 @@ const styles = StyleSheet.create({
     },
     loginContainer: {
       flex: 0.12,
-      backgroundColor: '#ea580c',
+      // backgroundColor: '#ea580c',
+      backgroundColor: '#8338ec',
       justifyContent: 'center',
       alignItems: 'center',
       height: 10,

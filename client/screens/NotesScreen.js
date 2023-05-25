@@ -10,7 +10,7 @@ const NotesScreen = () => {
   return (
     <View style={styles.container}>
             <ScrollView showsVerticalScrollIndicator={false}>
-          <ImageBackground source={require('../orange.jpeg')} style={styles.image}>
+          <ImageBackground source={require('../purple-background.avif')} style={styles.image}>
               <View style={styles.wrapper}>
                 <Text style={styles.title}>NOTES</Text>
               </View>

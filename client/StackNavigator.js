@@ -31,7 +31,8 @@ function MyTabs() {
       headerShown: false,
       tabBarStyle: {
         backgroundColor: '#fff',
-        borderTopColor: '#f97316',
+        // borderTopColor: '#f97316',
+        borderTopColor: 'grey',
         borderTopWidth: 1,
         shadowOffset: {
           width: 0,
@@ -60,6 +61,7 @@ function MyTabs() {
         tabBarIcon: ({color, size, focused}) => {
           let iconName;
           focused ? iconName = 'home' : iconName = 'home-outline'
+          focused ? color = '#67e8f9' : color = '#06b6d4'
           return <Ionicons name={iconName} color={color} size={size} />
       }
       }}
@@ -78,6 +80,7 @@ function MyTabs() {
         tabBarIcon: ({color, size, focused}) => {
           let iconName;
           focused ? iconName = 'book' : iconName = 'book-outline'
+          focused ? color = '#d8b4fe' : color = '#a855f7'
           return <Ionicons name={iconName} color={color} size={size} />
         }
       }}
@@ -87,6 +90,7 @@ function MyTabs() {
         tabBarIcon: ({color, size, focused}) => {
           let iconName;
           focused ? iconName = 'settings' : iconName = 'settings-outline'
+          focused ? color = '#fda4af' : color = '#f43f5e'
           return <Ionicons name={iconName} color={color} size={size} />
         }
       }}
@@ -101,7 +105,7 @@ const StackNavigator = () => {
   const [loaded, setLoaded] = useState(false)
   // console.log(currentUser)
 
-  const URL = 'https://fdb9-71-190-177-64.ngrok-free.app'
+  const URL = 'https://4606-71-190-177-64.ngrok-free.app'
 
   useEffect(() => {
     async function checkToken() {

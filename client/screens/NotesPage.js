@@ -6,7 +6,7 @@ const NotesPage = ({ route, navigation }) => {
   return (
     <View style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
-        <ImageBackground source={require('../orange.jpeg')} style={styles.image}>
+        <ImageBackground source={require('../purple-background.avif')} style={styles.image}>
           <TouchableOpacity>
           <Text onPress={() => navigation.goBack()} style={styles.arrow}>←</Text>
           </TouchableOpacity>
