@@ -7,9 +7,10 @@ import ServiceCard from './ServiceCard'
 
 const ServiceScreen = ({ navigation }) => {
     const [services, setServices] = useState([])
+    const [currentUser, setCurrentUser, currentApts, setCurrentApts, URL] = useContext(UserContext)
 
     useEffect(() => {
-      fetch('http://localhost:3001/services')
+      fetch(`${URL}/services`)
         .then(resp => resp.json())
         .then(data => setServices(data))
     }, [])

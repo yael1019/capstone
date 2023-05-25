@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet, SafeAreaView } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native'
@@ -16,6 +16,7 @@ import NotesScreen from './screens/NotesScreen'
 import NotesPage from './screens/NotesPage'
 import SettingsScreen from './screens/SettingsScreen'
 import Ionicons from 'react-native-vector-icons/Ionicons'
+// import { SafeAreaView } from 'react-native-safe-area-context'
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -100,6 +101,8 @@ const StackNavigator = () => {
   const [loaded, setLoaded] = useState(false)
   // console.log(currentUser)
 
+  const URL = 'https://fdb9-71-190-177-64.ngrok-free.app'
+
   useEffect(() => {
     async function checkToken() {
       const token = await SecureStore.getItemAsync('token')
@@ -108,7 +111,7 @@ const StackNavigator = () => {
           const headers = {
             'Authorization': `Bearer ${token}`
           }
-          const res = await fetch('http://localhost:3001/check_token', { headers })
+          const res = await fetch(`${URL}/check_token`, { headers })
           const data = await res.json()
           // console.log(data)
           setCurrentUser(data.user)
@@ -123,19 +126,23 @@ const StackNavigator = () => {
   useEffect(() => {
     // console.log('Stack', currentUser)
     if(currentUser) {
-    fetch(`http://localhost:3001/appointments/3/${currentUser.id}`)
+    fetch(`${URL}/appointments/3/${currentUser.id}`)
       .then(res => res.json())
       .then(data => setCurrentApts(data))
     }
   }, [currentUser])
 
   if (!loaded) {
-    return <Text>Loading. . . </Text>
+    return (
+      <SafeAreaView contentContainerStyle={styles.container}>
+        <Text style={styles.loading}>Loading. . . </Text>
+      </SafeAreaView>
+    )
   }
 
   return (
     // <Stack.Navigator screenOptions={{headerShown: false}}>
-    <UserContext.Provider value={[currentUser, setCurrentUser, currentApts, setCurrentApts]}>
+    <UserContext.Provider value={[currentUser, setCurrentUser, currentApts, setCurrentApts, URL]}>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         {
           !currentUser
@@ -158,5 +165,16 @@ const StackNavigator = () => {
     </UserContext.Provider>
   )
 }
+
+const styles = StyleSheet.create({
+  loading: {
+    alignSelf: 'center'
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+})
 
 export default StackNavigator

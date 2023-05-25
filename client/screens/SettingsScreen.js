@@ -19,20 +19,22 @@ const SettingsScreen = ({ navigation }) => {
         </View>
       </ImageBackground>
       <View style={styles.viewContainer}>
-        <View style={styles.textContainer}>
-          {/* <Text>SettingsScreen</Text> */}
-          <Text>
-          {/* <Text style={styles.text}></Text> */}
+        <View>
+          <View style={styles.textContainer}>
           <Text style={{fontWeight: 'bold', fontSize: 22,}}>{ currentUser.name }</Text>
-          </Text>
+          </View>
+          <View style={styles.textContainer}>
+          <Text style={{fontSize: 15, marginBottom: 20}}>Email: </Text>
           <Text>
-          <Text style={{fontWeight: 'bold', fontSize: 22,}}>Email: </Text>
           <Text style={styles.text}> { currentUser.email }</Text>
           </Text>
+          </View>
+          <View style={styles.textContainer}>
+          <Text style={{fontSize: 15, marginBottom: 20}}>Username: </Text>
           <Text>
-          <Text style={{fontWeight: 'bold', fontSize: 22,}}>Username: </Text>
           <Text style={styles.text}> { currentUser.username }</Text>
           </Text>
+          </View>
         </View>
       <TouchableOpacity style={styles.buttonContainer} onPress={handleLogout}>
         <Text style={styles.button}>Log Out</Text>
@@ -83,35 +85,48 @@ viewContainer: {
     borderTopEndRadius: 60,
     bottom: 80,
     backgroundColor: '#E8EAED',
-    paddingTop: 45
+    paddingTop: 45,
+    justifyContent: 'center',
+    // alignItems: 'center'
+    // gap: 30
 },
 textContainer: {
   // marginBottom: 20
-  borderWidth: 6,
-  // borderColor: '#ea580c',
-  borderColor: '#fb923c',
-  // borderColor: 'black',
-  // backgroundColor: '#E8EAED',
-  // backgroundColor: '#fff',
-  // backgroundColor: '#ea580c',
-  backgroundColor: '#f5f5f5',
-  // backgroundColor: 'black',
-  // backgroundColor: '#fb923c',
-  borderRadius: 30,
-  padding: 40,
-  marginTop: 50,
-  marginLeft: 10,
-  marginRight: 10,
-  flex: 0.8,
-  justifyContent: 'space-evenly',
+  // borderWidth: 6,
+  // // borderColor: '#ea580c',
+  // borderColor: '#fb923c',
+  // // borderColor: 'black',
+  // // backgroundColor: '#E8EAED',
+  // // backgroundColor: '#fff',
+  // // backgroundColor: '#ea580c',
+  // backgroundColor: '#f5f5f5',
+  // // backgroundColor: 'black',
+  // // backgroundColor: '#fb923c',
+  // borderRadius: 30,
+  // padding: 40,
+  // marginTop: 50,
+  // marginLeft: 10,
+  // marginRight: 10,
+  // flex: 0.8,
+  // justifyContent: 'space-evenly',
   shadowOffset: {width: 5, height: 10},
   shadowOpacity: 0.6,
   shadowRadius: 3,
+  borderBottomWidth: 3, 
+  marginBottom: 30,
+  marginRight: 10,
+  marginLeft: 10,
+  borderColor: '#ea580c',
+  borderRadius: 15,
+  padding: 10,
+  backgroundColor: '#E8EAED'
 },
 text: {
-  fontSize: 20,
-  padding: 5, 
+  fontSize: 22,
+  // padding: 15, 
   // color: '#fff'
+  fontWeight: 'bold',
+  // marginTop: 50
 },
 buttonContainer: {
   // flex: 0.12,
