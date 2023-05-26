@@ -20,7 +20,7 @@ const ServiceScreen = ({ navigation }) => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
     <View style={styles.container}>
-    <ImageBackground source={require('../orange.jpeg')} style={styles.image}>
+    <ImageBackground source={require('../pink.webp')} style={styles.image}>
       <View style={styles.wrapper}>
         <Text style={styles.title}>SERVICES</Text>
       </View>
@@ -73,7 +73,8 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginRight: 15,
     fontSize: 16,
-    backgroundColor: '#ea580c',
+    // backgroundColor: '#ea580c',
+    backgroundColor: '#db2777',
     // shadowOffset: {width: 1, height: 10},
     // shadowOpacity: 0.4,
     // shadowRadius: 3,

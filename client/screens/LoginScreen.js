@@ -65,7 +65,8 @@ const LoginScreen = ({ navigation }) => {
       {/* </SafeAreaView> */}
       <View style={styles.viewContainer}>
             <View style={{padding: 40}}>
-              <Text style={{color: '#c2410c', fontSize: 34}}>LOG IN</Text>
+              {/* <Text style={{color: '#c2410c', fontSize: 34}}>LOG IN</Text> */}
+              <Text style={{color: '#ea580c', fontSize: 34}}>LOG IN</Text>
             </View>
         <View style={{marginLeft: 50}}>
           <Text style={styles.labels}>Username:</Text>
@@ -140,6 +141,7 @@ const styles = StyleSheet.create({
     marginTop: -20
   },
   textInput: {
+    // borderBottomColor: '#ea580c',
     borderBottomColor: '#ea580c',
     // color: 'white',
     // backgroundColor: 'red',
@@ -157,6 +159,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     // flex: 0.12,
+    // backgroundColor: '#ea580c',
     backgroundColor: '#ea580c',
     justifyContent: 'center',
     alignItems: 'center',

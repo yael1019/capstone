@@ -10,7 +10,7 @@ const AppointmentScreen = () => {
   return (
     <View style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <ImageBackground source={require('../orange.jpeg')} style={styles.image}>
+          <ImageBackground source={require('../pink.webp')} style={styles.image}>
           <View style={styles.wrapper}>
             <Text style={styles.title}>APPOINTMENTS</Text>
           </View>

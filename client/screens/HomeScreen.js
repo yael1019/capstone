@@ -19,7 +19,8 @@ const HomeScreen = ({ navigation }) => {
   return (
     <NativeBaseProvider>
         <View style={styles.container}>
-          <ImageBackground source={require('../orange.jpeg')} style={styles.image}>
+          {/* <ImageBackground source={require('../orange.jpeg')} style={styles.image}> */}
+          <ImageBackground source={require('../pink.webp')} style={styles.image}>
             <View style={styles.brandView}>
               {/* <Icon name='location-sharp' style={styles.icon} /> */}
               <Text style={styles.brandViewText}>MENTORS</Text>
@@ -27,7 +28,8 @@ const HomeScreen = ({ navigation }) => {
           </ImageBackground>
           <View style={styles.bottomView}>
             <View style={{padding: 40}}>
-              <Text style={{color: '#c2410c', fontSize: 34}}>Welcome</Text>
+              {/* <Text style={{color: '#c2410c', fontSize: 34}}>Welcome</Text> */}
+              <Text style={{color: '#be123c', fontSize: 34}}>Welcome</Text>
             </View>
               <View style={styles.touchables}>
                   <TouchableOpacity style={styles.loginContainer} onPress={() => navigation.navigate('LoginScreen')}>
@@ -75,7 +77,7 @@ const styles = StyleSheet.create({
     bottomView: {
       flex: 1.5,
       backgroundColor: '#ffffff',
-      bottom: 50,
+      bottom: 80,
       borderTopStartRadius: 60,
       borderTopEndRadius: 60,
     },
@@ -86,7 +88,8 @@ const styles = StyleSheet.create({
     },
     loginContainer: {
       flex: 0.12,
-      backgroundColor: '#ea580c',
+      // backgroundColor: '#ea580c',
+      backgroundColor: '#ec4899',
       justifyContent: 'center',
       alignItems: 'center',
       height: 10,

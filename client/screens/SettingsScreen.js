@@ -13,7 +13,7 @@ const SettingsScreen = ({ navigation }) => {
     }
   return (
     <View style={styles.container}>
-      <ImageBackground source={require('../orange.jpeg')} style={styles.image}>
+      <ImageBackground source={require('../pink.webp')} style={styles.image}>
         <View style={styles.wrapper}>
           <Text style={styles.brandViewText}>SETTINGS</Text>
         </View>
@@ -116,7 +116,7 @@ textContainer: {
   marginBottom: 30,
   marginRight: 10,
   marginLeft: 10,
-  borderColor: '#ea580c',
+  borderColor: '#ff006e',
   borderRadius: 15,
   padding: 10,
   backgroundColor: '#E8EAED'
