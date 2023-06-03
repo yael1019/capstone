@@ -10,7 +10,14 @@ const NotesPage = ({ route, navigation }) => {
           <TouchableOpacity>
           <Text onPress={() => navigation.goBack()} style={styles.arrow}>←</Text>
           </TouchableOpacity>
-          <Text style={styles.brandViewText}>{apts.service} Notes</Text>
+          {
+            apts.service === "Primary and Secondary Application Essay Edits"
+            ?
+            <Text style={styles.brandViewText}>Application Essay Edits</Text>
+            :
+            <Text style={styles.brandViewText}>{apts.service} Notes</Text>
+
+          }
         </ImageBackground>
           <View style={styles.viewContainer}>
           {/* <Text>NotesPage</Text> */}
