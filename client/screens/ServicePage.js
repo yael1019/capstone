@@ -93,7 +93,13 @@ const ServicePage = ({ navigation, route }) => {
           <TouchableOpacity>
           <Text onPress={() => navigation.goBack()} style={styles.arrow}>←</Text>
           </TouchableOpacity>
-          <Text style={styles.brandViewText}>{service.name}</Text>
+          {
+            service.name === 'Primary and Secondary Application Essay Edits'
+            ?
+            <Text style={styles.brandViewText}>Application Essay Edits</Text>
+            :
+            <Text style={styles.brandViewText}>{service.name}</Text>
+          }
         </ImageBackground>
         <View style={styles.viewContainer}>
         <View style={styles.textContainer}>

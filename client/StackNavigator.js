@@ -105,7 +105,7 @@ const StackNavigator = () => {
   const [loaded, setLoaded] = useState(false)
   // console.log(currentUser)
 
-  const URL = 'https://f236-74-90-165-51.ngrok-free.app'
+  const URL = 'https://b5a5-71-190-177-64.ngrok-free.app'
 
   useEffect(() => {
     async function checkToken() {

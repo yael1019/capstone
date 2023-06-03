@@ -16,7 +16,7 @@ if __name__ == '__main__':
         print("Starting Seeding!")
         # password_hash = bcrypt.generate_password_hash('password123').decode('utf-8')
         users = []
-        tim = User('Tim Charles', 'timothy_charles@gmail.com', 'TimmyTom', bcrypt.generate_password_hash('password123').decode('utf-8'))
+        tim = User('Tim Charles', 'timmothycharles0@gmail.com', 'TimmyTom', bcrypt.generate_password_hash('password123').decode('utf-8'))
         bob = User('Bob Anthony', 'bobAnthony@gmail.com', 'Anthonyb', bcrypt.generate_password_hash('password123').decode('utf-8'))
         jacky = User('Jacky Gell', 'jacksgells@gmail.com', 'JackyGeller', bcrypt.generate_password_hash('password123').decode('utf-8'))
         abraham = User('Abraham Shalom', 'abe_shalom@gmail.com', 'Abe', bcrypt.generate_password_hash('password123').decode('utf-8'))
